@@ -3,6 +3,7 @@ import math
 import pytest
 
 import damageover
+from damageover import dot
 
 def _raises(fn, exc=ValueError):
     try:

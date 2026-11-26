@@ -20,7 +20,7 @@ def _a():
 
 CASES = [
     ("empty", lambda: _a().target() is None),
-    ("add", lambda: (_a().add('t1', 10.0, 1.0), _a().target())[1] == 't1'),
+    ("add", lambda: (lambda a: (a.add('t1', 10.0, 1.0), a.target())[1] == 't1')(_a())),
     ("two", lambda: (lambda a: (a.add('t1', 5.0, 1.0), a.add('t2', 9.0, 1.0), a.target())[2] == 't2')(_a())),
     ("decay", lambda: (lambda a: (a.add('t1', 10.0, 1.0), a.tick(1.0), a.target())[2] == 't1')(_a())),
     ("bad_amount", lambda: _raises(lambda: _a().add('t', -1.0, 1.0))),

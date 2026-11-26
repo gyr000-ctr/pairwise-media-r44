@@ -20,7 +20,7 @@ def _b():
 
 CASES = [
     ("empty", lambda: _b().active() == []),
-    ("apply", lambda: (_b().apply('atk', 1.0, 1, 'stack'), len(_b().active()))[1] == 1),
+    ("apply", lambda: (lambda b: (b.apply('atk', 1.0, 1, 'stack'), len(b.active()))[1] == 1)(_b())),
     ("refresh", lambda: (lambda b: (b.apply('atk', 1.0, 1, 'refresh'), b.tick(0.5), b.apply('atk', 1.0, 1, 'refresh'), b.remaining('atk'))[3] > 0.9)(_b())),
     ("stack", lambda: (lambda b: (b.apply('atk', 1.0, 3, 'stack'), b.apply('atk', 1.0, 3, 'stack'), b.stacks('atk'))[2] == 2)(_b())),
     ("cap", lambda: (lambda b: ([b.apply('atk', 1.0, 2, 'stack') for _ in range(5)], b.stacks('atk'))[1] == 2)(_b())),
